@@ -1,5 +1,12 @@
 import styled, { ThemeProvider } from "styled-components";
-import { AuthContextProvider, MyRoutes, Light, Dark, Sidebar } from "./index";
+import {
+  AuthContextProvider,
+  MyRoutes,
+  Light,
+  Dark,
+  Sidebar,
+  MenuHam,
+} from "./index";
 import { createContext, useState } from "react";
 import { Device } from "./styles/breackpoints";
 
@@ -23,7 +30,9 @@ function App() {
                   setState={() => setSidebarOpen(!sidebarOpen)}
                 />
               </section>
-              <section className="ContentMenuHam">Menu Hamburguesa</section>
+              <section className="ContentMenuHam">
+                <MenuHam />
+              </section>
               <section className="ContentRoutes">
                 <MyRoutes />
               </section>
