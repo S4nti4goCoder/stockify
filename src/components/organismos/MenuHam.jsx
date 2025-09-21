@@ -13,11 +13,11 @@ export function MenuHam() {
           <HamburgerMenu onClick={() => setClick(!click)}>
             <label
               className={click ? "toggle active" : "toggle"}
-              for="checkbox"
+              htmlFor="checkbox"
             >
-              <div class="bars" id="bar1"></div>
-              <div class="bars" id="bar2"></div>
-              <div class="bars" id="bar3"></div>
+              <div className="bars" id="bar1"></div>
+              <div className="bars" id="bar2"></div>
+              <div className="bars" id="bar3"></div>
             </label>
           </HamburgerMenu>
         </section>
@@ -56,7 +56,7 @@ export function MenuHam() {
 }
 
 const Container = styled.div`
-  background-color: ${({ theme }) => theme.body};
+  background-color: ${(props) => props.theme.body};
 `;
 
 const NavBar = styled.nav`
@@ -112,7 +112,7 @@ const HamburgerMenu = styled.span`
   .bars {
     width: 100%;
     height: 4px;
-    background-color: rgb(176, 92, 255);
+    background-color: ${(props) => props.theme.text};
     border-radius: 4px;
   }
 
@@ -128,17 +128,47 @@ const HamburgerMenu = styled.span`
 
 const Menu = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   list-style: none;
-  z-index: 100;
-  @media screen {
+  z-index: 10;
+  flex-direction: column;
+  position: fixed;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  background-color: ${(props) => `rgba(${props.theme.bodyRgba},0.85)`};
+  backdrop-filter: blur(3px);
+  transform: ${(props) =>
+    props.$click == "true" ? "translateY(0)" : "translateY(1000%)"};
+  transition: all 0.3s ease;
+  .LinkContainer {
+    &:hover {
+      background: ${(props) => props.theme.bgAlpha};
+    }
+    .Links {
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: ${(props) => props.theme.text};
+      height: 80px;
+      .Linkicon {
+        padding: ${v.smSpacing} ${v.mdSpacing};
+        display: flex;
+        svg {
+          font-size: 25px;
+        }
+      }
+    }
   }
 `;
 
 const Divider = styled.div`
   height: 1px;
   width: 100%;
-  background: ${(props) => props.theme.bg4};
+  background-color: ${(props) => props.theme.bg4};
   margin: ${() => v.lgSpacing} 0;
 `;

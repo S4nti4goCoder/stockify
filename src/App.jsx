@@ -47,7 +47,7 @@ function App() {
 const Container = styled.main`
   display: grid;
   grid-template-columns: 1fr;
-  background-color: ${({ theme }) => theme.bgtotal};
+  background-color: ${(props) => props.theme.bgtotal};
   .ContentSidebar {
     display: none;
   }

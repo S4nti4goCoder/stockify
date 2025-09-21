@@ -168,6 +168,7 @@ const Container = styled.div`
     }
   }
 `;
+
 const Main = styled.div`
   .Sidebarbutton {
     position: fixed;
@@ -190,6 +191,7 @@ const Main = styled.div`
     color: ${(props) => props.theme.text};
   }
 `;
+
 const Divider = styled.div`
   height: 1px;
   width: 100%;
